@@ -13,10 +13,11 @@ test("เข้าสู่ระบบ ค้นหาสินค้า แล
   await test.step("ค้นหาสินค้าที่มีชื่อ Bicycle",async ()=> {
     await page.locator("#search-product-input").fill("bicycle");
     await page.locator("#search-product-input").press("Enter");
+    await expect(page.locator('#search-product-input')).toHaveValue('bicycle');
 
-    await expect(page.locator("product-card-name-1")).toHaveText("Balance Training Bicycle");
-    await expect(page.locator("product-card-price-1")).toHaveText("฿4,314.60");
-    await page.locator("product-card-1").click();
+    await expect(page.locator('#product-card-name-1')).toHaveText('Balance Training Bicycle');
+    await expect(page.locator("#product-card-price-1")).toHaveText("฿4,314.60");
+    await page.locator("#product-card-1").click();
 
   });
 
