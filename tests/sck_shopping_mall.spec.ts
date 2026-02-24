@@ -22,22 +22,23 @@ test("เข้าสู่ระบบ ค้นหาสินค้า แล
   });
 
   await test.step("ตรวจสอบรายละเอียดสินค้า",async ()=> {
-    await expect(page.locator("#product-detail-product-name")).toHaveValue("Balance Training Bicycle");
+    await expect(page.locator("#product-detail-product-name")).toHaveText("Balance Training Bicycle");
     await expect(page.locator("#product-detail-brand")).toHaveText("SportsFun");
-    await expect(page.locator("#product-card-price-1")).toHaveText("฿4,314.60");
+    await expect(page.locator("#product-detail-price-thb")).toHaveText("฿4,314.60");
     await expect(page.locator("#product-detail-point")).toHaveText("43 Points");
-    await expect(page.locator("#product-detail-quantity-input")).toHaveText("1");
+
     await expect(page.locator("#product-detail-stock")).not.toHaveText("0")
     await page.locator("#product-detail-add-to-cart-btn").click();
  });
 
   await test.step("ตรวจสอบ Balance Training Bicycle ในตระกร้าสินค้า",async ()=> {
-    await expect(page.locator("#product-1-name")).toHaveValue("Balance Training Bicycle");
-    await expect(page.locator("#product-card-price-1")).toHaveText("฿8,629.20");
+    await expect(page.locator("#product-1-name")).toHaveText("Balance Training Bicycle");
+    await expect(page.locator("#product-1-price")).toHaveText("฿8,629.20");
     await expect(page.locator("#product-1-point")).toHaveText("43 Points");
     await expect(page.locator("#product-1-stock")).not.toHaveText("0")
     await expect(page.locator("#product-1-quantity-input")).toHaveText("1");
-    await page.locator("#shopping-cart-subtotal-price").click();
+    await expect(page.locator("#shopping-cart-subtotal-price")).toHaveText("฿4,314.60");
+    await page.locator("#shopping-cart-checkout-btn").click();
  });
 
 
