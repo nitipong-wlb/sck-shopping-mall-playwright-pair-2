@@ -26,9 +26,14 @@ test("เข้าสู่ระบบ ค้นหาสินค้า แล
     await expect(page.locator("#product-detail-brand")).toHaveText("SportsFun");
     await expect(page.locator("#product-detail-price-thb")).toHaveText("฿4,314.60");
     await expect(page.locator("#product-detail-point")).toHaveText("43 Points");
-
+    await expect(page.locator("#product-detail-quantity-input")).toHaveValue("1");
     await expect(page.locator("#product-detail-stock")).not.toHaveText("0")
+  });
+
+  await test.step("กดเพิ่มเข้าตระกร้าสินค้าและตรวจสอบ",async ()=> {
     await page.locator("#product-detail-add-to-cart-btn").click();
+    await expect(page.locator("#header-menu-cart-badge")).toHaveText("1")
+    await page.locator("#header-menu-cart-btn").click();
  });
 
   await test.step("ตรวจสอบ Balance Training Bicycle ในตระกร้าสินค้า",async ()=> {
