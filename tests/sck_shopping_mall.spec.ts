@@ -31,6 +31,14 @@ test("เข้าสู่ระบบ ค้นหาสินค้า แล
     await page.locator("#product-detail-add-to-cart-btn").click();
  });
 
+  await test.step("ตรวจสอบ Balance Training Bicycle ในตระกร้าสินค้า",async ()=> {
+    await expect(page.locator("#product-1-name")).toHaveValue("Balance Training Bicycle");
+    await expect(page.locator("#product-card-price-1")).toHaveText("฿8,629.20");
+    await expect(page.locator("#product-1-point")).toHaveText("43 Points");
+    await expect(page.locator("#product-1-stock")).not.toHaveText("0")
+    await expect(page.locator("#product-1-quantity-input")).toHaveText("1");
+    await page.locator("#shopping-cart-subtotal-price").click();
+ });
 
 
 
