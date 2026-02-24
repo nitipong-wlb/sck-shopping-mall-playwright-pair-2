@@ -21,13 +21,17 @@ test("เข้าสู่ระบบ ค้นหาสินค้า แล
 
   });
 
-await test.step("ตรวจสอบรายละเอียดสินค้า",async ()=> {
+  await test.step("ตรวจสอบรายละเอียดสินค้า",async ()=> {
     await expect(page.locator("#product-detail-product-name")).toHaveValue("Balance Training Bicycle");
     await expect(page.locator("#product-detail-brand")).toHaveText("SportsFun");
     await expect(page.locator("#product-card-price-1")).toHaveText("฿4,314.60");
     await expect(page.locator("#product-detail-point")).toHaveText("43 Points");
     await expect(page.locator("#product-detail-quantity-input")).toHaveText("1");
     await expect(page.locator("#product-detail-stock")).not.toHaveText("0")
+    await page.locator("#product-detail-add-to-cart-btn").click();
  });
+
+
+
 
 });
