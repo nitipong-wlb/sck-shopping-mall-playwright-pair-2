@@ -10,5 +10,10 @@ test('เข้าสู่ระบบ ค้นหาสินค้า แล
     await page.locator('#login-btn').click();
   });
 
+  await test.step('ค้นหาสินค้าที่มีชื่อ Bicycle',async ()=> {
+    await page.locator('#search-product-input').fill('bicycle');
+    await page.locator('#search-product-input').press('Enter');
+
+  });
 
 });
